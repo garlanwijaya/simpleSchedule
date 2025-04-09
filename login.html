@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/bg.jpg">
+    <link rel="stylesheet" href="css/auth.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Login</title>
+  </head>
+  <body class="h-screen w-screen flex justify-center items-center bg-black">
+    <section class="flex justify-center items-center w-screen">
+      <div class="loginBox">
+        <form id="loginForm">
+          <h2>Login</h2>
+          <div class="inputBox">
+            <span class="icon"><i class="ph-fill ph-user"></i></span>
+            <input type="text" required id="username" autocomplete="off" />
+            <label for="Username">Username</label>
+          </div>
+          <div class="inputBox">
+            <span class="icon"><i class="ph-fill ph-lock-key"></i></span>
+            <input type="password" required id="password" autocomplete="off" />
+            <label for="Password">Password</label>
+          </div>
+          <div class="forpass">
+            <a href="#">Forgot Password</a>
+          </div>
+          <button type="submit">Login</button>
+          <div class="registLink">
+            <p>Don't have an account? <a href="signup.html">Signup</a></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script>
+      // Fungsi login asinkron
+      const loginUser = (username, password) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const user = localStorage.getItem("Account");
+
+            if (!user) {
+              return reject("User not found");
+            }
+
+            const parsedUser = JSON.parse(user);
+
+            if (parsedUser.password !== password) {
+              return reject("Incorrect Password");
+            }
+
+            // Simpan session user
+            localStorage.setItem("User", JSON.stringify(parsedUser));
+            resolve();
+          }, 500); // Simulasi delay jaringan 500ms
+        });
+      };
+
+      // Event listener login dengan async/await
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Tambahkan loading state
+          const loginBtn = e.target.querySelector("button");
+          loginBtn.textContent = "Logging in...";
+          loginBtn.disabled = true;
+
+          try {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            await loginUser(username, password);
+            window.location.href = "index.html";
+          } catch (error) {
+            alert(error);
+            loginBtn.textContent = "Login";
+            loginBtn.disabled = false;
+          }
+        });
+    </script>
+  </body>
+</html>

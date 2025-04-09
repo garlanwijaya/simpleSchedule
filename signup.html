@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/bg.jpg">
+    <link rel="stylesheet" href="css/auth.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Signup</title>
+  </head>
+  <body class="h-screen w-screen flex justify-center items-center">
+    <section class="flex justify-center items-center w-screen">
+      <div class="loginBox">
+        <form id="signupForm">
+          <h2>Signup</h2>
+          <div class="inputBox">
+            <span class="icon"><i class="ph-fill ph-user"></i></span>
+            <input type="text" required id="name" autocomplete="off" />
+            <label for="name">Name</label>
+          </div>
+          <div class="inputBox">
+            <span class="icon"><i class="ph-fill ph-user"></i></span>
+            <input type="text" required id="username" autocomplete="off" />
+            <label for="Username">Username</label>
+          </div>
+          <div class="inputBox">
+            <span class="icon"><i class="ph-fill ph-lock-key"></i></span>
+            <input type="password" required id="password" autocomplete="off" />
+            <label for="Password">Password</label>
+          </div>
+          <div class="inputBox">
+            <span class="icon"><i class="ph-fill ph-lock-key"></i></span>
+            <input
+              type="password"
+              required
+              id="confirmPassword"
+              autocomplete="off"
+            />
+            <label for="confirmPassword">Confirm Password</label>
+          </div>
+          <button type="submit">Signup</button>
+          <div class="registLink">
+            <p>Already have an account? <a href="login.html">Login</a></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script>
+      // Fungsi signup asinkron
+      const signupUser = (name, username, password, confirmPassword) => {
+        // Pastikan parameter benar
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            // Perbaiki variabel yang digunakan di sini
+            if (password !== confirmPassword) {
+              // Gunakan confirmPassword, bukan conf
+              return reject("Passwords do not match");
+            }
+
+            const existingUser = localStorage.getItem("Account");
+            if (existingUser) {
+              const parsedUser = JSON.parse(existingUser);
+              if (parsedUser.username === username) {
+                return reject("Username already exists");
+              }
+            }
+
+            const newUser = { name, username, password };
+            localStorage.setItem("Account", JSON.stringify(newUser));
+            resolve();
+          }, 500);
+        });
+      };
+
+      // Event listener signup dengan async/await
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Ambil nilai form
+          const name = document.getElementById("name").value;
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+          // Tambahkan loading state
+          const signupBtn = e.target.querySelector("button");
+          signupBtn.textContent = "Signing up...";
+          signupBtn.disabled = true;
+
+          try {
+            await signupUser(name, username, password, confirmPassword);
+            alert("Signup successful");
+            window.location.href = "login.html";
+          } catch (error) {
+            alert(error);
+            signupBtn.textContent = "Signup";
+            signupBtn.disabled = false;
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  padding: 10px;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+main {
+  padding: 10px;
+}
+
+main h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.jadwalBox {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.inputBox {
+  display: flex;
+  margin-bottom: 10px;
+}
+.inputBox label {
+  display: flex;
+  align-items: center;
+  width: 35vh;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.inputBox input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.inputBox input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+button {
+  padding: 5px 10px;
+  font-weight: 600;
+}
+
+.jadwalBox {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+td {
+  padding: 5px;
+  text-align: center;
+}
+
+td .aksi span {
+  width: 40%;
+}
+
+td .aksi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.edit {
+  font-size: 24px;
+  padding: 10px 0;
+}
+
+.hapus {
+  font-size: 24px;
+  padding: 10px 0;
+}
+
+.editForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.editForm form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.editForm form .inputBox {
+  margin-bottom: 10px;
+}
+
+.editForm form .inputBox label {
+  margin-bottom: 5px;
+}
+
+.editForm form .inputBox input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.editForm form .inputBox input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.editForm form button {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.editForm form button:hover {
+  background-color: #0069d9;
+}
+
+.editForm form button[type="submit"] {
+  margin-top: 10px;
+}
+
+.editForm form button[type="button"] {
+  display: none;
+  margin-top: 10px;
+  background-color: #ff0000;
+}
+
+.editForm form button[type="button"]:hover {
+  background-color: #cc0000;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .inputBox {
+    flex-direction: column;
+  }
+  .inputBox label {
+    width: 100%;
+  }
+  .inputBox input {
+    width: 100%;
+  }
+  .show {
+    height: 150vh;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  header h1 {
+    font-size: 16px;
+  }
+  header i {
+    font-size: 16px;
+  }
+  main h2 {
+    font-size: 16px;
+    text-align: center;
+  }
+  .editForm {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 100%;
+  }
+  .editForm form {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+  }
+  .editForm form .inputBox {
+    margin-bottom: 10px;
+  }
+  .editForm form .inputBox label {
+    margin-bottom: 5px;
+  }
+  .editForm form .inputBox input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .editForm form .inputBox input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  }
+  .editForm form button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .editForm form button:hover {
+    background-color: #0069d9;
+  }
+  .editForm form button[type="submit"] {
+    margin-top: 10px;
+  }
+  .editForm form button[type="button"] {
+    display: block;
+    margin-top: 10px;
+    background-color: #ff0000;
+  }
+  th,
+  td {
+    font-size: 14px;
+  }
+}

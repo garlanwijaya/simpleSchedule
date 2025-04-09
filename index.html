@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="icon" type="image/x-icon" href="/images/bg.jpg">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div id="popup"></div>
+    <header class="flex justify-between items-center bg-gray-600 text-white">
+      <h1 class="flex items-center justify-center">Dashboard</h1>
+      <span id="logout"><i class="ph-fill ph-sign-out text-2xl cursor-pointer flex items-center justify-center hover:text-black transition duration-300"></i></span>
+    </header>
+    <main>
+      <h2 id="welcomeMessage"></h2>
+      <div class="jadwalBox">
+        <form action="" id="isiJadwal">
+          <div class="inputBox">
+            <label for="namaMatkul">Nama Mata Kuliah</label>
+            <input
+              type="text"
+              name="namaMatkul"
+              id="namaMatkul"
+              placeholder="Mata Kuliah"
+              required
+            />
+          </div>
+          <div class="inputBox">
+            <label for="hari">Hari</label>
+            <input
+              type="text"
+              name="hari"
+              id="hari"
+              placeholder="Hari"
+              required
+            />
+          </div>
+          <div class="inputBox">
+            <label for="jamMulai">Pukul</label>
+            <input
+              type="time"
+              name="jamMulai"
+              id="jamMulai"
+              placeholder="Pukul"
+              required
+            />
+          </div>
+          <div class="inputBox">
+            <label for="ruang">Ruang</label>
+            <input
+              type="text"
+              name="ruang"
+              id="ruang"
+              placeholder="Ruang"
+              required
+            />
+          </div>
+          <button type="submit" id="tambahJadwal" class="w-full bg-blue-500 text-white rounded-full cursor-pointer hover:bg-blue-600 transition duration-300">Tambah</button>
+        </form>
+      </div>
+      <div class="jadwalBox" id="jadwalBox">
+        <div id="tampilJadwal"></div>
+      </div>
+      <div id="editForm" class="editForm hidden">
+        <form action="" id="editJadwalForm">
+          <div class="inputBox">
+            <label for="editNamaMatkul">Matkul</label>
+            <input
+              type="text"
+              name="editNamaMatkul"
+              id="editNamaMatkul"
+              placeholder="Mata Kuliah"
+              required
+            />
+          </div>
+          <div class="inputBox">
+            <label for="editHari">Hari</label>
+            <input
+              type="text"
+              name="editHari"
+              id="editHari"
+              placeholder="Hari"
+              required
+            />
+          </div>
+          <div class="inputBox">
+            <label for="editJamMulai">Pukul</label>
+            <input
+              type="time"
+              name="editJamMulai"
+              id="editJamMulai"
+              placeholder="Pukul"
+              required
+            />
+          </div>
+          <div class="inputBox">
+            <label for="editRuang">Ruang</label>
+            <input
+              type="text"
+              name="editRuang"
+              id="editRuang"
+              placeholder="Ruang"
+              required
+            />
+          </div>
+          <button type="submit" id="editJadwalSubmit">Submit</button>
+          <button type="button" id="editJadwalCancel">Cancel</button>
+        </form>
+      </div>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
